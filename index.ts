@@ -17,9 +17,14 @@ export { default as usePlaceSeo } from './modules/places/composables/usePlaceSeo
 export { default as Button } from './components/Button/Button.vue'
 export { default as Loader } from './components/Loader/Loader.vue'
 export { default as SearchBar } from './components/SearchBar/SearchBar.vue'
+export { default as TipTap } from './components/TipTap/TipTap.vue'
+export { default as Upload } from './components/Upload/Upload.vue'
 
 // Directives
 export { default as RippleDirective } from './directives/ripple'
+
+// Plugins
+export { default as echo } from './echo/index'
 
 export {
   // Composables
