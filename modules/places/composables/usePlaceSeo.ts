@@ -1,9 +1,11 @@
+import { useSeoMeta } from '#app'
+
 /**
  *
  * @param { object } route
  * @param { object } place
  */
-export const usePlaceSeo = (route: object, place: object) => {
+export default (route: object, place: object) => {
   let title = [
     'Отзывы',
     'о месте',
