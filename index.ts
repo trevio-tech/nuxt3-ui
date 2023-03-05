@@ -1,6 +1,7 @@
 // Composables
 import usePopup from './composables/usePopup'
 import useQuery from './composables/useQuery'
+export { default as useSearchHead } from './composables/useSearchHead'
 
 // Module composables
 import useChat from './modules/chats/composables/useChat'

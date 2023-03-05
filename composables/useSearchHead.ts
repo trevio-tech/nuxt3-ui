@@ -1,4 +1,4 @@
-export const useSearchHead = (route) => {
+export default (route) => {
   let heading = 'Поиск'
 
 
