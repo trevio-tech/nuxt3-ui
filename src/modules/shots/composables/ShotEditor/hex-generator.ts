@@ -1,3 +1,4 @@
+// @ts-nocheck
 export default () => {
   const hexValues = '0123456789abcdef'
 

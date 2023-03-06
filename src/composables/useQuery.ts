@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { useNuxtApp, useFetch } from 'nuxt/app'
 
 export default async ({ query, variables = {} }, options = {}) => {
@@ -29,7 +31,7 @@ export default async ({ query, variables = {} }, options = {}) => {
   })
 
   if (typeof data.value === 'object' && Object.hasOwn(data.value, 'errors')) {
-    throw data.value.errors[0]
+    throw data.value?.errors[0]
   }
 
   return {

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { fabric } from 'fabric'
 
 const setBrush = (name: string) => {

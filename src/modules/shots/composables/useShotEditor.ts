@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import './ShotEditor/renderTextLinesBackground'
 import './ShotEditor/fabric.brushes.min'
 import { fabric } from 'fabric'
@@ -116,7 +118,7 @@ const deleteObject = (event) => {
 }
 
 const addSticker = (url) => {
-  new fabric.Image.fromURL(url, function(image) {
+  fabric.Image.fromURL(url, function(image) {
     image.setControlsVisibility({
       mb: false,
       mt: false,
@@ -149,7 +151,7 @@ const addImage = () => {
     fileReader.readAsDataURL(files[0])
 
     fileReader.onload = (event) => {
-      fabric.Image.fromURL(event.target.result, (image) => {
+      fabric.Image.fromURL(event.target.result.toString(), (image) => {
         image.scaleToWidth(canvas.getWidth() - 40)
 
         image.setControlsVisibility({
@@ -176,57 +178,55 @@ const addImage = () => {
 }
 
 
-const canvasToFile = async () => {
-  let file: File = null
+const canvasToFile = async (): Promise<File> => {
+  return await new Promise((resolve) => {
+    let file: File = null
 
-  await new Promise((resolve) => {
     canvas
-        .discardActiveObject()
-        .renderAll()
-        .clone((clone) => {
-          clone.setDimensions({ width: 480, height: 840 })
-          clone.renderAll()
+      .discardActiveObject()
+      .renderAll()
+      .clone((clone) => {
+        clone.setDimensions({ width: 480, height: 840 })
+        clone.renderAll()
 
-          const selection = new fabric.ActiveSelection(clone.getObjects(), {
-            canvas: clone
-          })
-
-          /*if (canvas.height < 840) {
-            selection.set('top', 840 - selection.height)
-          } else if (canvas.height > 840) {
-            selection.set('top', (840 - canvas.height) / 2)
-          }
-
-          if (canvas.width != 480) {
-            selection.set('left', (480 - selection.width) / 2)
-          }*/
-
-          selection.destroy()
-
-          let dataUrl = clone.toDataURL({
-            height: clone.height,
-            width: clone.width,
-          })
-              .split(',')
-
-          let mime = dataUrl[0].match(/:(.*?);/)[1]
-          let bstr = atob(dataUrl[1])
-          let n = bstr.length
-          let uint8Array = new Uint8Array(n)
-
-          while (n--) {
-            uint8Array[n] = bstr.charCodeAt(n)
-          }
-
-          file = new File([
-            new Blob([uint8Array], { type: mime })
-          ], 'shot.png')
-
-          resolve()
+        const selection = new fabric.ActiveSelection(clone.getObjects(), {
+          canvas: clone
         })
-  })
 
-  return file
+        /*if (canvas.height < 840) {
+          selection.set('top', 840 - selection.height)
+        } else if (canvas.height > 840) {
+          selection.set('top', (840 - canvas.height) / 2)
+        }
+
+        if (canvas.width != 480) {
+          selection.set('left', (480 - selection.width) / 2)
+        }*/
+
+        selection.destroy()
+
+        let dataUrl = clone.toDataURL({
+          height: clone.height,
+          width: clone.width,
+        })
+            .split(',')
+
+        let mime = dataUrl[0].match(/:(.*?);/)[1]
+        let bstr = atob(dataUrl[1])
+        let n = bstr.length
+        let uint8Array = new Uint8Array(n)
+
+        while (n--) {
+          uint8Array[n] = bstr.charCodeAt(n)
+        }
+
+        file = new File([
+          new Blob([uint8Array], { type: mime })
+        ], 'shot.png')
+
+        resolve(file)
+      })
+  })
 }
 
 const onSubmit = async (callback: Function, isTravel) => {
@@ -239,7 +239,9 @@ const onSubmit = async (callback: Function, isTravel) => {
   try {
     const formData = new FormData()
 
-    formData.append('image', await canvasToFile())
+    const file = await canvasToFile()
+
+    formData.append('image', file)
 
     formData.set('operations', JSON.stringify({
       query: `

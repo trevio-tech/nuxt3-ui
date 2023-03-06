@@ -11,7 +11,7 @@
 </style>
 
 <script setup>
-import { useNuxtApp } from '#imports'
+import { useNuxtApp } from 'nuxt/app'
 import { defineAsyncComponent, ref, watch } from 'vue'
 
 const { $auth, $overlay } = useNuxtApp()

@@ -1,11 +1,17 @@
-import { useSeoMeta } from '#imports'
+// @ts-nocheck
+
+import { useSeoMeta } from 'nuxt/app'
+
+interface Place {
+  full_name?: string
+}
 
 /**
  *
- * @param { object } route
+ * @param { any } route
  * @param { object } place
  */
-export default (route: object, place: object) => {
+export default (route: any, place: Place) => {
   let title = [
     'Отзывы',
     'о месте',

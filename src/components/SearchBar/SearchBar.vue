@@ -46,7 +46,7 @@
 <script setup>
 import { ref } from 'vue'
 import { debounce, orderBy } from 'lodash-es'
-import { useRouter } from '#imports'
+import { useRouter } from 'nuxt/app'
 
 import {
   Combobox,
@@ -55,7 +55,7 @@ import {
   ComboboxOption,
   TransitionRoot,
 } from '@headlessui/vue'
-import { useQuery, Button } from '@trevio/ui'
+import { useQuery, Button } from '../../index'
 const router = useRouter()
 
 const items = ref([])

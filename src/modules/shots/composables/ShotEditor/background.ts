@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { fabric } from 'fabric'
 import { selectImage } from './file'
 import hexGenerator from './hex-generator';

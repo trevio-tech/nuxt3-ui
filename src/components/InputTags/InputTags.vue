@@ -53,7 +53,7 @@
 <script setup>
 import debounce from 'lodash/debounce'
 import { ref } from 'vue'
-import { useQuery } from '@trevio/ui'
+import useQuery from '../../composables/useQuery'
 
 import {
   Combobox,

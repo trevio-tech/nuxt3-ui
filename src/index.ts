@@ -1,3 +1,4 @@
+// @ts-nocheck
 import 'virtual:windi.css'
 
 // Composables
@@ -41,7 +42,6 @@ export { default as Select } from './components/Select/Select.vue'
 export { default as Textarea } from './components/Textarea/Textarea.vue'
 export { default as TipTap } from './components/TipTap/TipTap.vue'
 export { default as Upload } from './components/Upload/Upload.vue'
-export { default as IsLoggedIn } from './components/IsLoggedIn.vue'
 
 // Directives
 export { default as RippleDirective } from './directives/ripple'

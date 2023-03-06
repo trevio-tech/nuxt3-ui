@@ -1,8 +1,9 @@
 <script setup>
+import { computed } from 'vue'
+import { useNuxtApp } from 'nuxt/app'
+
 const count = computed(() => $overlay.stack.length)
 const { $overlay } = useNuxtApp()
-import { computed } from 'vue'
-import { useNuxtApp } from '#imports'
 
 const onHide = () => {
   if (typeof $overlay.stack[0]?.onHide === 'function') {

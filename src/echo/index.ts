@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Echo from 'laravel-echo'
 import Pusher from 'pusher-js'
 import { ApolloLink, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client/core'

@@ -53,7 +53,7 @@ export default {
 <script setup>
 import { nextTick, ref } from 'vue'
 import debounce from 'lodash/debounce'
-import { useQuery } from '@trevio/ui'
+import useQuery from '../../composables/useQuery'
 
 import {
   Combobox,

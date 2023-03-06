@@ -1,4 +1,4 @@
-
+// @ts-nocheck
 const selectImage = (callback: Function) => {
   const { shotEditor } = window
 

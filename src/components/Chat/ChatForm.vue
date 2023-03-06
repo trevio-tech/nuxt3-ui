@@ -6,10 +6,9 @@
 
 <script setup>
 import { ref, watch } from 'vue'
-import { useChatStore } from '~/components/modules/chats/stores/chat'
 import { useForm } from 'vee-validate'
 import { pick } from 'lodash-es'
-import { useQuery } from '@trevio/ui'
+import useQuery from '../../composables/useQuery'
 
 const props = defineProps({
   chatMessageFields: {
@@ -20,6 +19,10 @@ const props = defineProps({
     type:     [Number, String],
     required: true,
   },
+  store: {
+    type: Object,
+    required: true
+  }
 })
 
 const formInitialState = {
@@ -31,7 +34,6 @@ const formInitialState = {
 
 const form = ref({...formInitialState})
 const reply = ref({})
-const store = useChatStore()
 const isLoading = ref(false)
 
 watch(() => store.selectedMessages, (newValue) => {

@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 export default (url, name, width, height) => {
   const { innerWidth, innerHeight } = window
   const left = (innerWidth - width) / 2

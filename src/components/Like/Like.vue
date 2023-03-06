@@ -16,7 +16,7 @@ import bodymovin from 'lottie-web'
 import LikeIcon from './like.json'
 import { CREATE_LIKE, DELETE_LIKE } from './graphql'
 import { ref, onMounted, onBeforeMount } from 'vue'
-import { useQuery } from '@trevio/ui'
+import useQuery from '../../composables/useQuery'
 const props = defineProps({
   modelType: {
     type: String,

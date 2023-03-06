@@ -1,4 +1,5 @@
-import { useSeoMeta } from '#imports'
+// @ts-nocheck
+import { useSeoMeta, useHead } from 'nuxt/app'
 
 export default (route) => {
   let heading = 'Поиск'
