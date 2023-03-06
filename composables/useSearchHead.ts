@@ -1,3 +1,5 @@
+import { useSeoMeta } from '#imports'
+
 export default (route) => {
   let heading = 'Поиск'
 

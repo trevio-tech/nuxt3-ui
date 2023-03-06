@@ -1,4 +1,4 @@
-import { useSeoMeta } from '#app'
+import { useSeoMeta } from '#imports'
 
 /**
  *

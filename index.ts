@@ -48,7 +48,7 @@ export { default as RippleDirective } from './directives/ripple'
 export { default as echo } from './echo/index'
 export { default as OverlayPlugin } from './components/Overlay/plugin'
 
-export { default as BaseConfig } from './nuxt.config'
+// export { default as BaseConfig } from './nuxt.config'
 
 export {
   // Composables
@@ -57,5 +57,5 @@ export {
 
   // Module composables
   useChat,
-  useShotEditor,
+  // useShotEditor,
 }
