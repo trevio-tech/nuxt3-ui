@@ -1,3 +1,5 @@
+import 'virtual:windi.css'
+
 // Composables
 import usePopup from './composables/usePopup'
 import useQuery from './composables/useQuery'
